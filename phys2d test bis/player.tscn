@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.0
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 108.0
+
+[node name="player" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 342, 200 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2( 348, 115 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource( 2 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 348, 168 )
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D2")
